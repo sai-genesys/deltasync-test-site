@@ -65,12 +65,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sai-genesys.github.io/deltasync-test-site/blog/2024/local-testing-guide.html</loc>
-    <lastmod>2024-10-15</lastmod>
-    <changefreq>never</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://sai-genesys.github.io/deltasync-test-site/blog/2024/sitemap-crawling.html</loc>
     <lastmod>2024-09-20</lastmod>
     <changefreq>never</changefreq>
