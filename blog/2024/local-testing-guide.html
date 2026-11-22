@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Local Testing Guide | Blog | DeltaSync Corp</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;}
+  nav{background:#4a90d9;padding:12px 24px;display:flex;gap:20px;align-items:center;}
+  nav a{color:#fff;text-decoration:none;font-size:14px;}
+  nav .brand{font-weight:bold;font-size:16px;margin-right:20px;}
+  .content{padding:40px;max-width:800px;margin:30px auto;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  h1{color:#2c5f8a;margin-bottom:8px;}
+  .meta{font-size:12px;color:#888;margin-bottom:20px;}
+  p{line-height:1.7;margin-bottom:14px;}
+  code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:13px;}
+  footer{background:#333;color:#aaa;text-align:center;padding:16px;font-size:12px;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">DeltaSync Corp</span>
+  <a href="../../index.html">Home</a>
+  <a href="../../products/index.html">Products</a>
+  <a href="../index.html">Blog</a>
+  <a href="../../about/index.html">About</a>
+  <a href="../../contact/index.html">Contact</a>
+</nav>
+<div class="content">
+  <h1>How to Test Large File Sync Locally</h1>
+  <div class="meta">2024-10-15 · Tips · 5 min read</div>
+  <p>Testing delta sync with large files locally requires a simple HTTP server. The easiest approach is to run <code>npx http-server . -p 8080</code> from your static site folder — no installation required.</p>
+  <p>Once running, point your sync configuration to <code>http://localhost:8080/sitemap.xml</code>. The crawler will discover all URLs listed in the sitemap and begin syncing each page.</p>
+  <p>For large files (50MB+), ensure your sync client has a sufficient timeout configured. We recommend at least 120 seconds for initial ingestion of very large HTML documents.</p>
+</div>
+<footer>© 2024 DeltaSync Corp. Synthetic test data only.</footer>
+</body>
+</html>

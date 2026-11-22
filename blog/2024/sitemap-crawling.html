@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sitemap Crawling | Blog | DeltaSync Corp</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;}
+  nav{background:#4a90d9;padding:12px 24px;display:flex;gap:20px;align-items:center;}
+  nav a{color:#fff;text-decoration:none;font-size:14px;}
+  nav .brand{font-weight:bold;font-size:16px;margin-right:20px;}
+  .content{padding:40px;max-width:800px;margin:30px auto;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  h1{color:#2c5f8a;margin-bottom:8px;}
+  .meta{font-size:12px;color:#888;margin-bottom:20px;}
+  p{line-height:1.7;margin-bottom:14px;}
+  footer{background:#333;color:#aaa;text-align:center;padding:16px;font-size:12px;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">DeltaSync Corp</span>
+  <a href="../../index.html">Home</a>
+  <a href="../../products/index.html">Products</a>
+  <a href="../index.html">Blog</a>
+  <a href="../../about/index.html">About</a>
+  <a href="../../contact/index.html">Contact</a>
+</nav>
+<div class="content">
+  <h1>Understanding Sitemap-Driven Crawling</h1>
+  <div class="meta">2024-09-20 · Engineering · 4 min read</div>
+  <p>Sitemap-driven crawling allows Delta Sync to discover and index all pages in a site without following hyperlinks. By reading sitemap.xml at the root of your site, the crawler builds a complete list of URLs to process.</p>
+  <p>Each URL entry supports lastmod, changefreq and priority attributes. Delta Sync uses lastmod to determine whether a page has changed since the last sync, making it highly efficient for large sites with infrequent updates.</p>
+  <p>For multi-level sites, we recommend grouping URLs by section and assigning appropriate priority values — 1.0 for the homepage, 0.8 for top-level sections, and 0.6 for deeper pages.</p>
+</div>
+<footer>© 2024 DeltaSync Corp. Synthetic test data only.</footer>
+</body>
+</html>
