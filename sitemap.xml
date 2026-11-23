@@ -36,7 +36,7 @@
   </url>
   <url>
     <loc>https://sai-genesys.github.io/deltasync-test-site/docs/index.html</loc>
-    <lastmod>2024-12-10</lastmod>
+    <lastmod>2024-12-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -83,6 +83,12 @@
     <lastmod>2024-12-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://sai-genesys.github.io/deltasync-test-site/docs/webcrawler-delta-test.pdf</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://sai-genesys.github.io/deltasync-test-site/docs/release-policy.html</loc>
