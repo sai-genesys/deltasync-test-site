@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="delta-sync,performance,benchmarks">
+<title>Performance Benchmarks | Blog | DeltaSync Corp</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;}
+  nav{background:#4a90d9;padding:12px 24px;display:flex;gap:20px;align-items:center;}
+  nav a{color:#fff;text-decoration:none;font-size:14px;}
+  nav .brand{font-weight:bold;font-size:16px;margin-right:20px;}
+  .content{padding:40px;max-width:800px;margin:30px auto;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  h1{color:#2c5f8a;margin-bottom:8px;}
+  h2{color:#2c5f8a;margin:24px 0 10px;}
+  .meta{font-size:12px;color:#888;margin-bottom:20px;}
+  p{line-height:1.7;margin-bottom:14px;}
+  table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+  th{background:#4a90d9;color:#fff;padding:9px 12px;text-align:left;font-size:13px;}
+  td{padding:8px 12px;border-bottom:1px solid #eee;font-size:13px;}
+  tr:nth-child(even){background:#f9f9f9;}
+  footer{background:#333;color:#aaa;text-align:center;padding:16px;font-size:12px;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">DeltaSync Corp</span>
+  <a href="../../index.html">Home</a>
+  <a href="../../products/index.html">Products</a>
+  <a href="../index.html">Blog</a>
+  <a href="../../about/index.html">About</a>
+  <a href="../../contact/index.html">Contact</a>
+</nav>
+<div class="content">
+  <h1>Delta Sync v2.0 Performance Benchmarks</h1>
+  <div class="meta">2024-11-20 · Engineering · 5 min read</div>
+  <p>Following the release of Delta Sync v2.0 we ran a full benchmark suite across a range of file sizes and site depths. All tests were conducted on a single-core 2.4 GHz instance with a cold index (no prior sync state).</p>
+
+  <h2>Full Sync — Time by File Size</h2>
+  <table>
+    <thead><tr><th>File Size</th><th>Pages</th><th>v1.8 (ms)</th><th>v2.0 (ms)</th><th>Improvement</th></tr></thead>
+    <tbody>
+      <tr><td>&lt; 10 KB</td><td>500</td><td>1820</td><td>1100</td><td>39%</td></tr>
+      <tr><td>10–50 KB</td><td>200</td><td>3400</td><td>2050</td><td>40%</td></tr>
+      <tr><td>50–200 KB</td><td>80</td><td>6800</td><td>4100</td><td>40%</td></tr>
+      <tr><td>&gt; 200 KB</td><td>20</td><td>9200</td><td>5500</td><td>40%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Incremental Sync — Changed Pages Only</h2>
+  <table>
+    <thead><tr><th>Changed Pages</th><th>Total Pages</th><th>v1.8 (ms)</th><th>v2.0 (ms)</th><th>Improvement</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>500</td><td>1820</td><td>95</td><td>95%</td></tr>
+      <tr><td>10</td><td>500</td><td>1820</td><td>310</td><td>83%</td></tr>
+      <tr><td>50</td><td>500</td><td>1820</td><td>980</td><td>46%</td></tr>
+      <tr><td>100</td><td>500</td><td>1820</td><td>1420</td><td>22%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Memory Usage</h2>
+  <table>
+    <thead><tr><th>Site Size</th><th>v1.8 Peak RAM</th><th>v2.0 Peak RAM</th></tr></thead>
+    <tbody>
+      <tr><td>100 pages</td><td>48 MB</td><td>31 MB</td></tr>
+      <tr><td>500 pages</td><td>210 MB</td><td>134 MB</td></tr>
+      <tr><td>1000 pages</td><td>430 MB</td><td>268 MB</td></tr>
+    </tbody>
+  </table>
+
+  <p>The gains in incremental sync are the most significant improvement in v2.0. By caching a content hash per URL, the engine can skip unchanged pages in under 1 ms each, making large sites with low churn extremely cheap to keep in sync.</p>
+</div>
+<footer>© 2024 DeltaSync Corp. Synthetic test data only.</footer>
+</body>
+</html>

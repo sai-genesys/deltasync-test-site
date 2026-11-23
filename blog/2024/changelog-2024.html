@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="delta-sync,changelog,releases">
+<title>Changelog 2024 | Blog | DeltaSync Corp</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;}
+  nav{background:#4a90d9;padding:12px 24px;display:flex;gap:20px;align-items:center;}
+  nav a{color:#fff;text-decoration:none;font-size:14px;}
+  nav .brand{font-weight:bold;font-size:16px;margin-right:20px;}
+  .content{padding:40px;max-width:800px;margin:30px auto;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  h1{color:#2c5f8a;margin-bottom:8px;}
+  h2{color:#2c5f8a;margin:28px 0 8px;font-size:1.1em;border-bottom:1px solid #e0e8f0;padding-bottom:6px;}
+  .meta{font-size:12px;color:#888;margin-bottom:20px;}
+  p{line-height:1.7;margin-bottom:10px;}
+  ul{margin:0 0 14px 20px;line-height:1.8;font-size:14px;}
+  .tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;margin-right:4px;font-weight:bold;}
+  .fix{background:#e8f5e9;color:#2e7d32;}
+  .feat{background:#e3f2fd;color:#1565c0;}
+  .perf{background:#fff3e0;color:#e65100;}
+  .break{background:#fce4ec;color:#c62828;}
+  footer{background:#333;color:#aaa;text-align:center;padding:16px;font-size:12px;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">DeltaSync Corp</span>
+  <a href="../../index.html">Home</a>
+  <a href="../../products/index.html">Products</a>
+  <a href="../index.html">Blog</a>
+  <a href="../../about/index.html">About</a>
+  <a href="../../contact/index.html">Contact</a>
+</nav>
+<div class="content">
+  <h1>Delta Sync 2024 Changelog</h1>
+  <div class="meta">Updated 2024-12-10 · All releases</div>
+  <p>Full release history for Delta Sync throughout 2024. Each entry lists the version, release date, and a summary of changes.</p>
+
+  <h2>v2.1.0 — 2024-12-10</h2>
+  <ul>
+    <li><span class="tag fix">fix</span> Pages with no lastmod attribute were incorrectly skipped during incremental sync</li>
+    <li><span class="tag fix">fix</span> Sitemap parser now handles CDATA-wrapped loc values</li>
+    <li><span class="tag feat">feat</span> Added support for sitemap index files (sitemapindex)</li>
+    <li><span class="tag perf">perf</span> Reduced memory allocation during large batch crawls by 12%</li>
+  </ul>
+
+  <h2>v2.0.0 — 2024-11-01</h2>
+  <ul>
+    <li><span class="tag feat">feat</span> Sitemap-driven crawling — crawler now reads sitemap.xml at root instead of following links</li>
+    <li><span class="tag feat">feat</span> Redesigned metadata tagging engine with tags.txt sidecar support</li>
+    <li><span class="tag feat">feat</span> Incremental sync using content hash comparison</li>
+    <li><span class="tag perf">perf</span> 40% faster full sync across all file size categories</li>
+    <li><span class="tag perf">perf</span> Peak RAM reduced by ~36% on 500-page sites</li>
+    <li><span class="tag break">breaking</span> Removed legacy link-following crawler; sitemap.xml is now required</li>
+    <li><span class="tag break">breaking</span> Config key crawler.followLinks removed — use sitemap.path instead</li>
+  </ul>
+
+  <h2>v1.9.2 — 2024-09-14</h2>
+  <ul>
+    <li><span class="tag fix">fix</span> Fixed race condition when syncing more than 256 pages concurrently</li>
+    <li><span class="tag fix">fix</span> Corrected priority parsing for sitemap entries with decimal values above 0.9</li>
+    <li><span class="tag perf">perf</span> Index write batching now flushes every 50 pages instead of every 10</li>
+  </ul>
+
+  <h2>v1.9.1 — 2024-08-02</h2>
+  <ul>
+    <li><span class="tag fix">fix</span> HTML entities in page titles were not decoded before indexing</li>
+    <li><span class="tag fix">fix</span> Relative URLs in sitemap loc elements now resolved against the base URL</li>
+    <li><span class="tag feat">feat</span> New --dry-run flag shows which pages would be synced without writing to the index</li>
+  </ul>
+
+  <h2>v1.9.0 — 2024-06-18</h2>
+  <ul>
+    <li><span class="tag feat">feat</span> Support for changefreq hint — pages marked never are skipped on incremental runs unless forced</li>
+    <li><span class="tag feat">feat</span> Added JSON export format for index snapshots</li>
+    <li><span class="tag perf">perf</span> Parallel fetch pool size is now configurable via crawler.concurrency</li>
+    <li><span class="tag fix">fix</span> Timeout errors during fetch no longer corrupt the index entry for that URL</li>
+  </ul>
+
+  <h2>v1.8.3 — 2024-04-30</h2>
+  <ul>
+    <li><span class="tag fix">fix</span> Pages returning HTTP 301 redirects are now followed up to 3 hops</li>
+    <li><span class="tag fix">fix</span> Fixed incorrect lastmod comparison when server returns dates without time component</li>
+  </ul>
+
+  <h2>v1.8.2 — 2024-03-11</h2>
+  <ul>
+    <li><span class="tag fix">fix</span> Crawler no longer retries on HTTP 404 — failure is recorded immediately</li>
+    <li><span class="tag feat">feat</span> 404 URLs are now flagged in the index with status=not_found for downstream reporting</li>
+    <li><span class="tag fix">fix</span> Fixed memory leak when processing pages with deeply nested HTML tables</li>
+  </ul>
+
+  <h2>v1.8.1 — 2024-01-22</h2>
+  <ul>
+    <li><span class="tag fix">fix</span> Sitemap entries with missing priority defaulted to 0 instead of 0.5</li>
+    <li><span class="tag fix">fix</span> Corrected encoding issue with non-ASCII characters in page titles</li>
+    <li><span class="tag perf">perf</span> Startup time reduced by pre-loading the index manifest on init</li>
+  </ul>
+</div>
+<footer>© 2024 DeltaSync Corp. Synthetic test data only.</footer>
+</body>
+</html>

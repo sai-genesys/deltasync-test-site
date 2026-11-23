@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="delta-sync,metadata,tags">
+<title>Metadata Tagging | Blog | DeltaSync Corp</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;}
+  nav{background:#4a90d9;padding:12px 24px;display:flex;gap:20px;align-items:center;}
+  nav a{color:#fff;text-decoration:none;font-size:14px;}
+  nav .brand{font-weight:bold;font-size:16px;margin-right:20px;}
+  .content{padding:40px;max-width:800px;margin:30px auto;background:#fff;border-radius:8px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  h1{color:#2c5f8a;margin-bottom:8px;}
+  .meta{font-size:12px;color:#888;margin-bottom:20px;}
+  p{line-height:1.7;margin-bottom:14px;}
+  pre{background:#f0f4f8;border-left:4px solid #4a90d9;padding:14px 16px;font-size:13px;margin-bottom:14px;overflow-x:auto;}
+  footer{background:#333;color:#aaa;text-align:center;padding:16px;font-size:12px;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">DeltaSync Corp</span>
+  <a href="../../index.html">Home</a>
+  <a href="../../products/index.html">Products</a>
+  <a href="../index.html">Blog</a>
+  <a href="../../about/index.html">About</a>
+  <a href="../../contact/index.html">Contact</a>
+</nav>
+<div class="content">
+  <h1>Metadata Tagging with tags.txt</h1>
+  <div class="meta">2024-12-01 · Engineering · 4 min read</div>
+  <p>Delta Sync supports a sidecar file format called tags.txt that lets you attach arbitrary key-value metadata to any synced document without modifying the HTML source. Place a tags.txt file in the same directory as the target page and the crawler will merge its contents into the index entry.</p>
+  <p>The format is one key=value pair per line. Keys are case-insensitive and values are plain strings. Example:</p>
+  <pre>author=Sara Patel
+category=engineering
+audience=internal
+reviewed=true</pre>
+  <p>Tags are indexed alongside the page content and can be used to filter sync results, restrict crawl scope, or drive downstream workflows. A page with audience=internal can be excluded from public index exports without removing it from the sitemap.</p>
+  <p>If a tags.txt file is updated between syncs, Delta Sync detects the change via file modification time and re-indexes the associated page even if the HTML itself has not changed. This makes tags.txt a lightweight way to trigger re-indexing without touching content.</p>
+</div>
+<footer>© 2024 DeltaSync Corp. Synthetic test data only.</footer>
+</body>
+</html>

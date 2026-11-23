@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="delta-sync,getting-started,install,setup">
+<title>Getting Started | Docs | DeltaSync Corp</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:Arial,sans-serif;background:#f5f5f5;color:#333;}
+  nav{background:#4a90d9;padding:12px 24px;display:flex;gap:20px;align-items:center;}
+  nav a{color:#fff;text-decoration:none;font-size:14px;}
+  nav .brand{font-weight:bold;font-size:16px;margin-right:20px;}
+  .page-header{background:#2c5f8a;color:#fff;padding:40px;text-align:center;}
+  .content{padding:40px;max-width:800px;margin:0 auto;}
+  .box{background:#fff;border-radius:8px;padding:28px;margin-bottom:20px;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+  h2{color:#2c5f8a;margin-bottom:12px;}
+  p{line-height:1.7;margin-bottom:12px;}
+  ol{margin:0 0 14px 20px;line-height:1.9;font-size:14px;}
+  pre{background:#f0f4f8;border-left:4px solid #4a90d9;padding:14px 16px;font-size:13px;margin-bottom:14px;overflow-x:auto;}
+  .breadcrumb{font-size:12px;color:#888;margin-bottom:20px;}
+  .breadcrumb a{color:#4a90d9;text-decoration:none;}
+  footer{background:#333;color:#aaa;text-align:center;padding:16px;font-size:12px;margin-top:40px;}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">DeltaSync Corp</span>
+  <a href="../index.html">Home</a>
+  <a href="../products/index.html">Products</a>
+  <a href="../blog/index.html">Blog</a>
+  <a href="../about/index.html">About</a>
+  <a href="../contact/index.html">Contact</a>
+</nav>
+<div class="page-header"><h1>Getting Started</h1><p>Up and running in under 10 minutes</p></div>
+<div class="content">
+  <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">Docs</a> › Getting Started</div>
+  <div class="box">
+    <h2>1. Install Delta Sync</h2>
+    <p>Delta Sync is distributed as a single binary. Download the latest release for your platform and place it on your PATH.</p>
+    <pre>curl -sSL https://releases.deltasync.io/install.sh | bash</pre>
+    <p>Verify the installation:</p>
+    <pre>deltasync --version
+# Delta Sync v2.1.0</pre>
+  </div>
+  <div class="box">
+    <h2>2. Configure your sitemap</h2>
+    <p>Delta Sync requires a valid sitemap.xml at the root of your site. At minimum each URL entry needs a loc element:</p>
+    <pre>&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://example.com/index.html&lt;/loc&gt;
+    &lt;lastmod&gt;2024-12-01&lt;/lastmod&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</pre>
+  </div>
+  <div class="box">
+    <h2>3. Run your first sync</h2>
+    <p>Point Delta Sync at your site root and run:</p>
+    <pre>deltasync sync --site https://example.com --sitemap /sitemap.xml</pre>
+    <p>Delta Sync will fetch each URL in the sitemap, extract text and metadata, and write the index to ./deltasync-index/ by default.</p>
+  </div>
+  <div class="box">
+    <h2>4. Run an incremental sync</h2>
+    <p>After the first full sync, subsequent runs are incremental by default. Only pages whose lastmod has advanced since the last sync are re-fetched:</p>
+    <pre>deltasync sync --site https://example.com --sitemap /sitemap.xml --incremental</pre>
+    <ol>
+      <li>Delta Sync reads the sitemap and compares each lastmod against the stored index entry.</li>
+      <li>Pages with a newer lastmod are fetched and re-indexed.</li>
+      <li>Pages with an unchanged lastmod are skipped.</li>
+      <li>Pages that return HTTP 404 are flagged with status=not_found in the index.</li>
+    </ol>
+  </div>
+</div>
+<footer>© 2024 DeltaSync Corp. Synthetic test data only.</footer>
+</body>
+</html>
