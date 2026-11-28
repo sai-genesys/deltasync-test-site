@@ -163,4 +163,4 @@
     <priority>0.3</priority>
   </url>
 
-</urlset>
+<!-- Intentionally missing closing urlset tag for E2E parser recovery -->
