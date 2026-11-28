@@ -163,4 +163,12 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- E2E duplicate URL scenario -->
+  <url>
+    <loc>https://sai-genesys.github.io/deltasync-test-site/contact/index.html</loc>
+    <lastmod>2024-12-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
