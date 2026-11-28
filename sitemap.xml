@@ -165,7 +165,7 @@
 
   <!-- E2E scenario document -->
   <url>
-    <loc>https://sai-genesys.github.io/deltasync-test-site/e2e/new-document.html</loc>
+    <loc>https://sai-genesys.github.io/deltasync-test-site/e2e/renamed-document.html</loc>
     <lastmod>2026-11-28</lastmod>
     <changefreq>never</changefreq>
     <priority>0.1</priority>
